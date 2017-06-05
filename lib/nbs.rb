@@ -1,8 +1,9 @@
+require "nbs/version"
+require "nbs/configuration"
+
 class Nbs
-  require "nbs/version"
-  require "nbs/configuration"
+  include HTTParty
   extend Configuration
-  require HTTParty
 
   define_setting :access_token
   define_setting :access_secret
