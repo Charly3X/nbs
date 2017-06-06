@@ -1,17 +1,16 @@
 require "nbs/version"
 require "nbs/configuration"
+require "httparty"
+require 'active_support/all'
 
 class Nbs
   include HTTParty
   extend Configuration
 
-  define_setting :access_token
-  define_setting :access_secret
+  define_setting :access_key
+  # define_setting :least_favorite_liquid, "seltzer water"
 
-  define_setting :favorite_liquid, "apple juice"
-  define_setting :least_favorite_liquid, "seltzer water"
-
-  base_uri 'entintel.api3.nextbigsound.com'
+  base_uri "entintel.api3.nextbigsound.com"
 
   def initialize(_nbs_id=356, _options = {}) # kanye west
     @nbs_id = "#{_nbs_id}.json"
@@ -41,7 +40,7 @@ class Nbs
   end
 
   def self.artist_search(_name)
-
+    get("/artists/search.json", { query: {q: "#{_name}"}}).parsed_response
   end
 
   private
