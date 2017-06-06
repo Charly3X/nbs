@@ -40,7 +40,15 @@ class Nbs
   end
 
   def self.artist_search(_name)
-    get("/artists/search.json", { query: {q: "#{_name}"}}).parsed_response
+    if @name != _name
+      @name = _name
+      result = get("/artists/search.json", { query: {q: "#{_name}"}}).parsed_response
+      @artist_search = []
+      result.each do |id, values|
+        @artist_search << {id: id, name: values["name"], music_brainz_id: values["music_brainz_id"]}
+      end
+    end
+    @artist_search
   end
 
   private
