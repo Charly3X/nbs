@@ -7,10 +7,8 @@ class Nbs
   include HTTParty
   extend Configuration
 
-  define_setting :access_key
+  # define_setting :access_key
   # define_setting :least_favorite_liquid, "seltzer water"
-
-  base_uri "entintel.api3.nextbigsound.com"
 
   def initialize(_nbs_id=356, _options = {}) # kanye west
     @nbs_id = "#{_nbs_id}.json"
@@ -49,6 +47,10 @@ class Nbs
       end
     end
     @artist_search
+  end
+
+  def self.setup(_key)
+    base_uri "#{_key}.api3.nextbigsound.com"
   end
 
   private

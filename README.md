@@ -24,13 +24,17 @@ Or install it yourself as:
 
 Set config variables, at the moment all that is needed is access key:
 
-Nbs.access_key = "your_access_key"
+`Nbs.setup "your_access_key"`
+
+In a config file eg (rails)
+
+>config/initializers/nbs.rb
 
 ### Artist search
 
 Nbs.artist_search("a tribe called quest")
 
-returns
+results in
 ```
 [
     [0] {
@@ -110,7 +114,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/nbs.
+Bug reports and pull requests are welcome on GitHub at https://github.com/eicore/nbs.
 
 
 ## License
