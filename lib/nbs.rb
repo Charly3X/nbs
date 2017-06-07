@@ -38,14 +38,13 @@ class Nbs
   end
 
   def self.artist_search(_name)
+    puts "name NBS is getting: #{_name}"
     result = get("/artists/search.json", { query: {q: "#{_name}"}}).parsed_response
     @artist_search = []
     result.each do |id, values|
       @artist_search << {nbs_id: id, name: values["name"], music_brainz_id: values["music_brainz_id"]}
     end
     @artist_search
-  rescue
-    []
   end
 
   def self.setup(_key)
