@@ -38,11 +38,12 @@ class Nbs
   end
 
   def self.artist_search(_name)
-    puts "name NBS is getting: #{_name}"
-    result = get("/artists/search.json", { query: {q: "#{_name}"}}).parsed_response
+    result = get("/artists/search.json", { query: {q: "#{_name}"}})
     @artist_search = []
-    result.each do |id, values|
-      @artist_search << {nbs_id: id, name: values["name"], music_brainz_id: values["music_brainz_id"]}
+    if result.code == 200
+      result.parsed_response.each do |id, values|
+        @artist_search << {nbs_id: id, name: values["name"], music_brainz_id: values["music_brainz_id"]}
+      end
     end
     @artist_search
   end
