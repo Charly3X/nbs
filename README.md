@@ -55,7 +55,7 @@ results in
 ]
 ```
 
-### Metrics
+### Metrics and Profiles
 instance based on nbs id
 ```
 default_options = {
@@ -105,6 +105,55 @@ available metrics via gem (more available through api)
 >*facebook, instagram, twitter, youtube*
 
 Typically results go as far back as 3 months
+
+`nbs.artist_profiles` returns
+
+```
+[
+    [0] {
+        :nbs_profle_id => "9946716",
+                  :url => "http://www.facebook.com/therealrunthejewels"
+    },
+    [1] {
+        :nbs_profle_id => "9946718",
+                  :url => "http://twitter.com/runjewels"
+    },
+    [2] {
+        :nbs_profle_id => "9946719",
+                  :url => "http://www.youtube.com/channel/UCeveumRTn2o--9j1Xz2KUCQ"
+    },
+    [3] {
+        :nbs_profle_id => "16209803",
+                  :url => "http://instagram.com/runthejewels"
+    }
+]
+```
+
+### Metric
+```
+Nbs.metric('9946716', {})
+default_options = { start: (Time.now - 3.day).to_i,
+                    end: Time.now.to_i,
+                    metric: 'fans' }
+```
+returns metrics for a single profile. eg:
+```
+[
+    [0] {
+          :time => 2017-07-09 00:00:00 UTC,
+        :volume => 64608
+    },
+    [1] {
+          :time => 2017-07-10 00:00:00 UTC,
+        :volume => 64737
+    },
+    [2] {
+          :time => 2017-07-11 00:00:00 UTC,
+        :volume => 64903
+    }
+]
+```
+
 
 ## Development
 

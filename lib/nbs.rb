@@ -26,7 +26,7 @@ class Nbs
         _metrics = am["Metric"]['fans']
         if _metrics.present? && SERVICES.any? { |s| s == service }
           @metrics[service.to_sym] ||= []
-          @metrics[service.to_sym] << { url: am['Profile']['url'], data: tidy_metrics(_metrics)}
+          @metrics[service.to_sym] << { url: am['Profile']['url'], data: self.class.tidy_metrics(_metrics)}
         end
       end
     end
