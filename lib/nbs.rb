@@ -39,7 +39,7 @@ class Nbs
       response = self.class.get("/profiles/artist/#{@nbs_id}", @options).parsed_response
       response.each do |id, data|
         next unless SERVICES.any? { |s| s == data['name'].downcase }
-        @artist_profiles << {nbs_profle_id: id, url: data['url']}
+        @artist_profiles << {nbs_profile_id: id, url: data['url']}
       end
     end
     @artist_profiles
