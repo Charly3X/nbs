@@ -49,7 +49,7 @@ class Nbs
     artist_search = []
     [_names].flatten.each do |name|
       result = get("/artists/search.json", { query: {q: "#{name}"}})
-      if result.code == 200
+      if result.code == 200 && result.parsed_response.present?
         result.parsed_response.each do |id, values|
           artist_search << {nbs_id: id, name: values["name"], music_brainz_id: values["music_brainz_id"]}
         end
