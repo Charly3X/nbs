@@ -8,7 +8,7 @@ class Nbs
   extend Configuration
   attr_accessor :all_metrics_raw
 
-  SERVICES = %w(facebook youtube twitter instagram)
+  SERVICES = %w(facebook youtube twitter)
   # define_setting :access_key
   # define_setting :least_favorite_liquid, "seltzer water"
 
